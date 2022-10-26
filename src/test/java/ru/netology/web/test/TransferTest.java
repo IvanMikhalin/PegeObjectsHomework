@@ -87,7 +87,7 @@ class TransferTest {
         var moneyTransferPage = dashboardPage.selectCardToTransfer(secondCardInfo);
         dashboardPage = moneyTransferPage.makeValidTransfer(amount, firstCardInfo);
         TransferPage.searchErrorMessage(
-                "На картe " + firstCardInfo.getCardNumber().substring(12, 16) +" недостаточно средств");
+                "На картe " + firstCardInfo.getCardNumber().substring(12, 16) + " недостаточно средств");
         assertEquals(firstCardBalance - amount, dashboardPage.checkBalance(firstCardInfo));
         assertEquals(secondCardBalance + amount, dashboardPage.checkBalance(secondCardInfo));
     }
@@ -107,7 +107,7 @@ class TransferTest {
         var moneyTransferPage = dashboardPage.selectCardToTransfer(firstCardInfo);
         dashboardPage = moneyTransferPage.makeValidTransfer(amount, secondCardInfo);
         TransferPage.searchErrorMessage(
-                "На картe " + secondCardInfo.getCardNumber().substring(12, 16) +" недостаточно средств");
+                "На картe " + secondCardInfo.getCardNumber().substring(12, 16) + " недостаточно средств");
         assertEquals(secondCardBalance, dashboardPage.checkBalance(secondCardInfo));
         assertEquals(firstCardBalance, dashboardPage.checkBalance(firstCardInfo));
     }

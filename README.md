@@ -1,1 +1,1 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/k42vqiukxjpaneho?svg=true)](https://ci.appveyor.com/project/IVAN37853/page-objects-homework)
+[![Build status](https://ci.appveyor.com/api/projects/status/iho9e4eorx8e5c3a?svg=true)](https://ci.appveyor.com/project/IVAN37853/pageobjectshomework)

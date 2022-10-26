@@ -25,7 +25,7 @@ public class TransferPage {
     }
 
     public DashboardPage makeValidTransfer(double amount, DataHelper.CardInfo cardInfo) {
-        rechargeCard (amount, cardInfo);
+        rechargeCard(amount, cardInfo);
         return new DashboardPage();
     }
 
