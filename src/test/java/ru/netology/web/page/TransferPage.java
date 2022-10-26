@@ -1,6 +1,7 @@
 package ru.netology.web.page;
 
 import com.codeborne.selenide.SelenideElement;
+import com.google.common.primitives.UnsignedInteger;
 import ru.netology.web.data.DataHelper;
 
 import java.time.Duration;
@@ -9,7 +10,6 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
 
 public class TransferPage {
 
@@ -17,7 +17,7 @@ public class TransferPage {
     private final SelenideElement fromInput = $("[data-test-id='from'] input");
     private final SelenideElement submitRecharge = $("[data-test-id='action-transfer']");
     private final SelenideElement rechargeHead = $(byText("Пополнение карты"));
-    private static final SelenideElement errorMessage = $("[data-test-id='error-message']");
+    private static final SelenideElement errorMessage = $("[data-test-id='error-notification']");
 
 
     public TransferPage() {
