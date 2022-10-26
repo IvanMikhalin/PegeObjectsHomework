@@ -45,4 +45,4 @@ out/
 !**/src/main/**
 !**/src/test/**
 !app-ibank.jar
-!artifacts/app-ibank.jar
+!app-ibank-build-for-testers.jar
