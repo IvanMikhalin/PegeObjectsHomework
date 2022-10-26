@@ -46,3 +46,4 @@ out/
 !**/src/test/**
 !app-ibank.jar
 !app-ibank-build-for-testers.jar
+!artifacts/app-ibank-build-for-testers.jar
