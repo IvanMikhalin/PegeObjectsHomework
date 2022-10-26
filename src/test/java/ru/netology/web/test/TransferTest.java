@@ -37,24 +37,6 @@ class TransferTest {
     }
 
     @Test
-    void shouldTransferFromFirstToSecond() {
-        var loginPage = new LoginPage();
-        var authInfo = getAuthInfo();
-        var verificationPage = loginPage.validLogin(authInfo);
-        var verificationCode = getVerificationCode();
-        var dashboardPage = verificationPage.validVerify(verificationCode);
-        var firstCardInfo = getFirstCardInfo();
-        var secondCardInfo = getSecondCardInfo();
-        var firstCardBalance = dashboardPage.checkBalance(firstCardInfo);
-        var secondCardBalance = dashboardPage.checkBalance(secondCardInfo);
-        var amount = generateValidAmount(firstCardBalance);
-        var moneyTransferPage = dashboardPage.selectCardToTransfer(secondCardInfo);
-        dashboardPage = moneyTransferPage.makeValidTransfer(amount, firstCardInfo);
-        assertEquals(firstCardBalance - amount, dashboardPage.checkBalance(firstCardInfo));
-        assertEquals(secondCardBalance + amount, dashboardPage.checkBalance(secondCardInfo));
-    }
-
-    @Test
     void shouldTransferFromSecondToFirst() {
         var loginPage = new LoginPage();
         var authInfo = getAuthInfo();
@@ -87,7 +69,7 @@ class TransferTest {
         var moneyTransferPage = dashboardPage.selectCardToTransfer(secondCardInfo);
         dashboardPage = moneyTransferPage.makeValidTransfer(amount, firstCardInfo);
         TransferPage.searchErrorMessage(
-                "На картe " + firstCardInfo.getCardNumber().substring(12, 16) + " недостаточно средств");
+                "Ошибка!");
         assertEquals(firstCardBalance - amount, dashboardPage.checkBalance(firstCardInfo));
         assertEquals(secondCardBalance + amount, dashboardPage.checkBalance(secondCardInfo));
     }
@@ -107,7 +89,7 @@ class TransferTest {
         var moneyTransferPage = dashboardPage.selectCardToTransfer(firstCardInfo);
         dashboardPage = moneyTransferPage.makeValidTransfer(amount, secondCardInfo);
         TransferPage.searchErrorMessage(
-                "На картe " + secondCardInfo.getCardNumber().substring(12, 16) + " недостаточно средств");
+                "Ошибка!");
         assertEquals(secondCardBalance, dashboardPage.checkBalance(secondCardInfo));
         assertEquals(firstCardBalance, dashboardPage.checkBalance(firstCardInfo));
     }
