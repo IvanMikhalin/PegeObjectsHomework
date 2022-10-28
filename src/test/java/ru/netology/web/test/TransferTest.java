@@ -15,25 +15,25 @@ class TransferTest {
 
     @BeforeEach
     void setup() {
-        open("http://localhost:9999", LoginPage.class);
+        open("http://localhost:9999");
     }
 
     @Test
-    void ShouldTransferFromFirstToSecond() {
+    void shouldTransferFromFirstToSecond() {
         var loginPage = new LoginPage();
         var authInfo = getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = getVerificationCode();
         var dashboardPage = verificationPage.validVerify(verificationCode);
         var firstCardInfo = getFirstCardInfo();
-        var SecondCardInfo = getSecondCardInfo();
+        var secondCardInfo = getSecondCardInfo();
         var firstCardBalance = dashboardPage.checkBalance(firstCardInfo);
-        var secondCardBalance = dashboardPage.checkBalance(SecondCardInfo);
+        var secondCardBalance = dashboardPage.checkBalance(secondCardInfo);
         var amount = generateValidAmount(firstCardBalance);
-        var transferPage = dashboardPage.selectCardToTransfer(SecondCardInfo);
+        var transferPage = dashboardPage.selectCardToTransfer(secondCardInfo);
         dashboardPage = transferPage.makeValidTransfer(amount, firstCardInfo);
         assertEquals(firstCardBalance - amount, dashboardPage.checkBalance(firstCardInfo));
-        assertEquals(secondCardBalance + amount, dashboardPage.checkBalance(SecondCardInfo));
+        assertEquals(secondCardBalance + amount, dashboardPage.checkBalance(secondCardInfo));
     }
 
     @Test
@@ -68,8 +68,7 @@ class TransferTest {
         var amount = generateInvalidAmount(firstCardBalance);
         var moneyTransferPage = dashboardPage.selectCardToTransfer(secondCardInfo);
         dashboardPage = moneyTransferPage.makeValidTransfer(amount, firstCardInfo);
-        TransferPage.searchErrorMessage(
-                "Ошибка!");
+        TransferPage.searchErrorMessage("Ошибка!");
         assertEquals(firstCardBalance - amount, dashboardPage.checkBalance(firstCardInfo));
         assertEquals(secondCardBalance + amount, dashboardPage.checkBalance(secondCardInfo));
     }
